@@ -49,7 +49,9 @@ def index():
 
 
 @app.route("/login", methods=["GET","POST"])
+
 def login():
+    Dato_inicial()
     if request.method=='POST':
         userid= request.values['username']
         password= request.values['password']  

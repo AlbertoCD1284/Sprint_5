@@ -1,12 +1,12 @@
 """
 create table datos_usuario
-date created: 2021-10-26 20:10:56.104367
+date created: 2021-10-28 22:57:01.393395
 """
 
 
 def upgrade(migrator):
     with migrator.create_table('datos_usuario') as table:
-        table.text('documento', unique=True)
+        table.text('documento', null=True, unique=True)
         table.text('nombre')
         table.text('apellido')
         table.text('genero')
