@@ -54,7 +54,8 @@ def login():
     Dato_inicial()
     if request.method=='POST':
         userid= request.values['username']
-        password= request.values['password']  
+        password=check_password_hash(request.values['password'])
+        # password=request.values['password']
         bd = Datos_Usuario.select().tuples()
         user=[filas[5] for filas in bd]
         contraseñas=[filas[9] for filas in bd]
@@ -85,7 +86,7 @@ def crearAdmin():
         telefono=request.form.get('telefono')
         cel=request.form.get('cel')
         cargo=request.form.get('cargo')
-        clave=request.form.get('clave')
+        clave=generate_password_hash(request.form.get('clave'))
         try:   
             ingresar_datos_usuario(nombre,apellido,genero,documento,direccion,email,telefono,cel,cargo,clave)
         except peewee.IntegrityError:
