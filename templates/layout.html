@@ -1,0 +1,185 @@
+<!-- LAYOUT PAGINA PRINCIPAL -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layaut</title>
+
+    <!-- LAYOUT CSS LOCAL -->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/layout.css')}}"
+    />
+
+    <!-- CSS WEB CERUELA-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!--##### LA PARTE SUPERIOR O CABEZA DEL PAGINA -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/"
+                  >Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a> 
+            </ul>
+            <form class="d-flex">
+              <input
+                class="form-control me-sm-2"
+                type="text"
+                placeholder="Buscar"
+              />
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                Buscar
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--##### EL CUERPO PRINCIPAL DE LA PAGINA -->
+    <article class="article">
+      <!--##### SECCION 1, ES EL ESAPCIO IZQUIERDO DONDE ESTAN LOS BOTONES DESPLEGADOS -->
+      <section class="section_1">
+        <div class="div_section_1">
+          
+          {% block section_1 %}
+
+          <!-- BOTON DESPLEGABLE ADMINISTRADOR -->
+          {% if rango == 'Superadministrador' %}
+            <div class="desplegable">
+              <button type="button" class="btn btn-primary">Administrador</button>
+              <ul class="links">
+                <a href="/crearAdmin">Crear</a>
+                <a href="/buscarUsuario">Buscar</a>
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if rango == 'Superadministrador' or rango == 'Administrador' %}
+            <!-- BOTON DESPLEGABLE CLIENTE FINAL -->
+            <div class="desplegable">
+              <button type="button" class="btn btn-primary">Cliente final</button>
+              <ul class="links">
+                <a href="/crearAdmin">Crear</a>
+                <a href="/buscarUsuario">Buscar</a>
+              </ul>
+            </div>
+
+            <!-- BOTON DESPLEGABLE PROVEEDOR -->
+            <div class="desplegable">
+              <button type="button" class="btn btn-primary">Proveedor</button>
+              <ul class="links">
+                <a href="/crearProv">Crear</a>
+                <a href="/buscarProv">Buscar</a>
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if rango == 'Superadministrador' or rango == 'Administrador' or rango == 'Usuario' %}
+            <!-- BOTON DESPLEGABLE PRODUCTO -->
+            <div class="desplegable">
+              <button type="button" class="btn btn-primary">Producto</button>
+              <ul class="links">
+                <a href="/crearProduc">Crear</a>
+                <a href="/buscarProduc">Buscar</a>
+              </ul>
+            </div>
+          {% endif %}
+          
+          {% endblock %}
+          
+        </div>
+      </section>
+
+      <!--##### SECCION 1, ES EL ESAPCIO IZQUIERDO DONDE ESTAN LOS BOTONES DESPLEGADOS -->
+      <section class="section_2">
+        {% block section_2 %}{% endblock section_2 %}
+      </section>
+    </article>
+
+    <!--##### EL CUERPO SECUNDARIO DE LA PAGINA, LADO DERECHO-->
+    <aside class="aside">
+      <figure>
+        <blockquote class="blockquote">
+          <p class="mb-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat a ante.
+          </p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+      </figure>
+
+      <img src="" alt="" />
+
+      <div class="card mb-3 apuntes">
+        <h3 class="card-header">Card header</h3>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="d-block user-select-none"
+          width="100%"
+          height="200"
+          aria-label="Placeholder: Image cap"
+          focusable="false"
+          role="img"
+          preserveAspectRatio="xMidYMid slice"
+          viewBox="0 0 318 180"
+          style="font-size: 1.125rem; text-anchor: middle"
+        >
+          <rect width="100%" height="100%" fill="#868e96"></rect>
+          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+        </svg>
+        <div class="card-body">
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+      </div>
+    </aside>
+    <!-- PARTE INFERIOR O PIE DE PAGINA -->
+    <footer class="footer"></footer>
+  </body>
+</html>

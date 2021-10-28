@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/login.css")}}">
+    
+</head>
+<body>
+    <div class="login-box">
+        <!-- Imagenes aqui -->
+        <h1>Login Here </h1>
+        <form method="post" action='/login'>
+            <!-- USERNAME -->
+            <label for= "username">Username</label>
+            <input type="text" placeholder="Enter Username" name="username" id="username">
+
+                <!-- PASSWORD -->
+                <label for= "password">password</label>
+                <input type="password" placeholder="Enter Password" name="password" id="password">
+
+                <input type="submit" value="Log in">
+
+                <a href="#">Lost your password</a><br>
+                <a href="#">Don't have an account</a>
+        </form>
+    </div>
+
+     
+</body>
+</html>

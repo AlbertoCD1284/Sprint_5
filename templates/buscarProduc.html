@@ -1,0 +1,169 @@
+<link rel="stylesheet" type="text/css" href="{{url_for("static",
+filename="css/buscarAdmin.css")}}"> {% extends './layout.html' %} {% block
+section_2 %}
+
+<h1>Buscar Producto</h1>
+
+<!-- PARA BUSQUEDA -->
+<form class="buscar" action="" method="POST">
+  <!--DOCUMENTO BUSCAR-->
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Ingresar Codigo"
+    name="cod_bus"
+  />
+  <input type="submit" class="btn btn-primary" name="buscar" value="Buscar" />
+</form>
+
+<form action="/buscarProduc" , method="POST">
+  <div class="section_2_div">
+    <!-- INPUT MARCA -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Marca"
+      name="marca"
+      value="{{datos[0].marca}}"
+    />
+    {% else %}
+    <input type="text" class="form-control" placeholder="Marca" name="marca" />
+    {% endif %}
+
+    <!-- INPUT NOMBRE -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      name="nombre"
+      value="{{datos[0].nombre}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      name="nombre"
+    />
+    {% endif %}
+
+    <!-- INPUT codigo -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Codigo"
+      name="codigo"
+      value="{{datos[0].codigo}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Codigo"
+      name="codigo"
+    />
+    {% endif %}
+
+    <!-- INPUT color -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Color"
+      name="color"
+      value="{{datos[0].color}}"
+    />
+    {% else %}
+    <input type="text" class="form-control" placeholder="color" name="color" />
+    {% endif %}
+
+    <!-- INPUT procesador -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Procesador"
+      name="procesador"
+      value="{{datos[0].procesador}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Procesador"
+      name="procesador"
+    />
+    {% endif %}
+
+    <!-- INPUT proveedor -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Proveedor"
+      name="proveedor"
+      value="{{datos[0].proveedor}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Proveedor"
+      name="proveedor"
+    />
+    {% endif %}
+  </div>
+  <!-- BOTONES  -->
+  <input type="submit" class="btn btn-primary" name="editar" value="Editar" />
+  <input
+    type="submit"
+    class="btn btn-primary"
+    name="eliminar"
+    value="Eliminar"
+  />
+</form>
+
+<form class="btn_Eli_Edi" action=""></form>
+
+{% endblock section_2 %} {% block section_1 %}
+
+<!-- BOTON DESPLEGABLE ADMINISTRADOR -->
+{% if rango == 'Superadministrador' %}
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Administrador</button>
+  <ul class="links">
+    <a href="/crearAdmin">Crear</a>
+    <a href="/buscarUsuario">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% if rango == 'Superadministrador' or rango == 'Administrador' %}
+<!-- BOTON DESPLEGABLE CLIENTE FINAL -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Cliente final</button>
+  <ul class="links">
+    <a href="/crearAdmin">Crear</a>
+    <a href="/buscarUsuario">Buscar</a>
+  </ul>
+</div>
+
+<!-- BOTON DESPLEGABLE PROVEEDOR -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Proveedor</button>
+  <ul class="links">
+    <a href="/crearProv">Crear</a>
+    <a href="/buscarProv">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% if rango == 'Superadministrador' or rango == 'Administrador' or rango == 'Usuario' %}
+<!-- BOTON DESPLEGABLE PRODUCTO -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Producto</button>
+  <ul class="links">
+    <a href="/crearProduc">Crear</a>
+    <a href="/buscarProduc">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% endblock %}

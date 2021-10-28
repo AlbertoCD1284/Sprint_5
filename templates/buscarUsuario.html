@@ -1,0 +1,251 @@
+<link rel="stylesheet" type="text/css" href="{{url_for("static",
+filename="css/buscarAdmin.css")}}"> {% extends './layout.html' %} {% block
+section_2 %}
+
+<h1>Buscar Usuario</h1>
+
+<!-- PARA BUSQUEDA -->
+<form class="buscar" action="" method="POST">
+  <!--DOCUMENTO BUSCAR-->
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Ingresar Documento"
+    name="doc_buscar"
+    id="doc"
+  />
+  <input type="submit" class="btn btn-primary" name="buscar" value="Buscar" />
+</form>
+
+<form action="/buscarUsuario" , method="POST">
+  <div class="section_2_div">
+    <!-- INPUT NOMBRE -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      name="nombre"
+      value="{{datos[0].nombre}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      name="nombre"
+    />
+    {% endif %}
+
+    <!-- INPUT APELLIDO -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Apellido"
+      name="apellido"
+      value="{{datos[0].apellido}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Apellido"
+      name="apellido"
+    />
+    {% endif %}
+
+    <!-- INPUT GENERO -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Genero"
+      name="genero"
+      value="{{datos[0].genero}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Genero"
+      name="genero"
+    />
+    {% endif %}
+
+    <!-- INPUT DOCUMENTO -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Documento"
+      name="documento"
+      value="{{datos[0].documento}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Documento"
+      name="documento"
+    />
+    {% endif %}
+
+    <!-- INPUT DIERECCION -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Direccion"
+      name="direccion"
+      value="{{datos[0].direccion}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Direccion"
+      name="direccion"
+    />
+    {% endif %}
+
+    <!-- INPUT EMAIL -->
+    {% if datos %}
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      name="email"
+      value="{{datos[0].email}}"
+    />
+    {% else %}
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      name="email"
+    />
+    {% endif %}
+
+    <!-- INPUT TELEFONO -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Numero telefonico"
+      name="telefono"
+      value="{{datos[0].telefono}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Numero telefonico"
+      name="telefono"
+    />
+    {% endif %}
+
+    <!-- INPUT CEL -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Numero celular"
+      name="cel"
+      value="{{datos[0].cel}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Numero celular"
+      name="cel"
+    />
+    {% endif %}
+
+    <!-- INPUT CARGO -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Cargo a ocupar"
+      name="cargo"
+      value="{{datos[0].cargo}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Cargo a ocupar"
+      name="cargo"
+    />
+    {% endif %}
+
+    <!-- INPUT CLAVE -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Clave"
+      name="clave"
+      value="{{datos[0].clave}}"
+    />
+    {% else %}
+    <input type="text" class="form-control" placeholder="Clave" name="clave" />
+    {% endif %}
+  </div>
+
+  <!-- BOTONES  -->
+  <div lass="btn_Eli_Edi">
+    <input type="submit" class="btn btn-primary" name="editar" value="Editar" />
+    <input
+      type="submit"
+      class="btn btn-primary"
+      name="eliminar"
+      value="Eliminar"
+    />
+  </div>
+</form>
+{% endblock section_2 %} {% block section_1 %}
+
+<!-- BOTON DESPLEGABLE ADMINISTRADOR -->
+{% if rango == 'Superadministrador' %}
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Administrador</button>
+  <ul class="links">
+    <a href="/crearAdmin">Crear</a>
+    <a href="/buscarUsuario">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% if rango == 'Superadministrador' or rango == 'Administrador' %}
+<!-- BOTON DESPLEGABLE CLIENTE FINAL -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Cliente final</button>
+  <ul class="links">
+    <a href="/crearAdmin">Crear</a>
+    <a href="/buscarUsuario">Buscar</a>
+  </ul>
+</div>
+
+<!-- BOTON DESPLEGABLE PROVEEDOR -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Proveedor</button>
+  <ul class="links">
+    <a href="/crearProv">Crear</a>
+    <a href="/buscarProv">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% if rango == 'Superadministrador' or rango == 'Administrador' or rango == 'Usuario' %}
+<!-- BOTON DESPLEGABLE PRODUCTO -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Producto</button>
+  <ul class="links">
+    <a href="/crearProduc">Crear</a>
+    <a href="/buscarProduc">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% endblock %}

@@ -1,0 +1,108 @@
+/* COLOR FONDO DE PAGINA */
+body{
+  background: #373b44;
+  background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+  background: linear-gradient(to right, #4286f4, #4f5d7c);
+}
+ asdf
+.apuntes{
+  background: #373b44;
+  background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+  background: linear-gradient(to right, #4286f4, #4f5d7c);
+}
+
+.navbar-brand{
+  margin-left: 250px;
+}
+.d-flex{
+  margin-left: 50px;  
+}
+
+
+/* CUERPO IZQUIERDO */
+.article {
+  display: inline-block;
+  width: 75%;
+  height: 900px;
+}
+/* SECCION IZQUIERDA DEL CUERPO IZQUIERDO */
+.section_1 {
+  display: inline-block;
+  /* background-color: #404ecf; */
+  width: 25%;
+  height: 100%;
+  padding: 12px;
+}
+
+.div_section_1 {
+  margin-top: 80px;
+}
+
+.desplegable {
+  margin-bottom: 20px;
+}
+.btn {
+  width: 60%;
+}
+
+.links {
+  background-color: #3e4b8d;
+  width: 60%;
+  display: none;
+}
+.links a {
+  color: #dadae7;
+  text-decoration: none;
+  display: block;
+  margin: center;
+  padding: 5px;
+  font-weight: 800px;
+}
+.links a:hover {
+  background-color: #848cb8;
+  width: 100%;
+}
+
+.desplegable:hover .links {
+  display: block;
+}
+/* SECCION DERECHA DEL CUERPO IZQUIERDO */
+.section_2 {
+  float: right;
+  display: inline-block;
+  /* background-color: #7481f1; */
+  width: 75%;
+  height: 100%;
+  text-align: center;
+}
+
+
+/*##### EL CUERPO SECUNDARIO DE LA PAGINA, LADO DERECHO */
+.aside {
+  float: right;
+  display: inline-block;
+  /* background-color: #404ecf; */
+  width: 25%;
+  height: 900px;
+  padding: 12px;
+  text-align: center;
+  margin: auto;
+}
+
+.blockquote{
+  color: aqua;
+}
+
+/* PARTE INFERIOR O PIE DE PAGINA  */
+.footer {
+  display: inline-block;
+  /* background-color: #1d00ff; */
+  float: bottom;
+  width: 100%;
+  height: 100%;
+}
+.footer h1 {
+  text-align: center;
+}
+
+

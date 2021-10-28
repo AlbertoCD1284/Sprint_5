@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="{{url_for("static",
+filename="css/buscarAdmin.css")}}">
+
+<!-- nombre nit direccion email telefono celular -->
+
+{% extends './layout.html' %} {% block section_2 %}
+
+<h1>Crear proveedores</h1>
+
+<form method="POST">
+  <div class="section_2_div">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre"
+      name="nombre"
+    />
+    <!-- DOCUMENTO -->
+    <input type="text" class="form-control" placeholder="NIT" name="nit" />
+
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Direccion"
+      name="direccion"
+    />
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      name="email"
+    />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Numero telefonico"
+      name="telefono"
+    />
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Numero celular"
+      name="celular"
+    />
+  </div>
+  <input
+    type="submit"
+    class="btn btn-primary"
+    name="ingresar"
+    value="Ingresar"
+  />
+</form>
+
+{% endblock section_2 %}
+
+<!-- **************section_1************************************* -->
+
+{% block section_1 %}
+
+<!-- BOTON DESPLEGABLE ADMINISTRADOR -->
+{% if rango == 'Superadministrador' %}
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Administrador</button>
+  <ul class="links">
+    <a href="/crearAdmin">Crear</a>
+    <a href="/buscarUsuario">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% if rango == 'Superadministrador' or rango == 'Administrador' %}
+<!-- BOTON DESPLEGABLE CLIENTE FINAL -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Cliente final</button>
+  <ul class="links">
+    <a href="/crearAdmin">Crear</a>
+    <a href="/buscarUsuario">Buscar</a>
+  </ul>
+</div>
+
+<!-- BOTON DESPLEGABLE PROVEEDOR -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Proveedor</button>
+  <ul class="links">
+    <a href="/crearProv">Crear</a>
+    <a href="/buscarProv">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% if rango == 'Superadministrador' or rango == 'Administrador' or rango == 'Usuario' %}
+<!-- BOTON DESPLEGABLE PRODUCTO -->
+<div class="desplegable">
+  <button type="button" class="btn btn-primary">Producto</button>
+  <ul class="links">
+    <a href="/crearProduc">Crear</a>
+    <a href="/buscarProduc">Buscar</a>
+  </ul>
+</div>
+{% endif %} {% endblock %}

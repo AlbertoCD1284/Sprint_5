@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <!-- conexion plantillas de google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- conexion fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+     <!-- conexion con css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}"
+    />
+    
+  </head>
+  <body>
+    <header>
+      <nav class="navbar-menu"> 
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"> <i class="fas fa-bars"></i>
+        </label>
+        <img class="logo" src="{{ url_for('static', filename='images/image_1.png') }}">
+        <ul class="nav-options">
+          <li><a href="/Home">Home</a></li>
+          <li><a href="/Home"> Nosotros</a></li>
+          <li><a href="/Home">Contactenos</a></li>
+       </ul>
+    </nav>
+    </header>
+  <main>
+      <section class="banner">
+        <div class="banner-content">
+          <img alt="imagen-banner" src="{{ url_for('static', filename='images/image_2.png')}}">
+          <div class="banner-text">
+            <h2>Bienvenido a <br>
+              Inventario Apple<br></h2>
+            <a href="/login">ACCEDER</a>
+          </div>
+          <!-- <div class="banner_fondo">
+            <img alt="imagen-banner" src="{{ url_for('static', filename='images/image_3.png')}}">
+          </div> -->
+        </div>
+
+
+      </section>
+
+
+    </main>
+       <!--<footer>
+
+    </footer> -->
+    <!-- conexion con fontawesome (micelania) -->
+    <script src="https://kit.fontawesome.com/2d295104d0.js" crossorigin="anonymous"></script>
+  </body>
+</html>

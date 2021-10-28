@@ -1,0 +1,35 @@
+.section_2 h1 {
+    margin-top: 5%;
+    margin-bottom: 5px;
+}
+
+.buscar input{
+    width: 250px;
+    margin: auto;
+    display: inline-block;
+}
+.buscar button{
+    width: 70px;
+}
+
+.section_2_div {
+    padding: 20px 10px;
+}
+
+.section_2_div input{
+    width: 250px;
+    display: inline-block;
+}
+
+.section_2_div input {
+    margin: 10px;
+    margin-bottom: 10px;
+}
+
+
+.btn_Eli_Edi input {
+    width: 80px;
+    display: inline-block;
+    margin: auto;
+    margin-top: 0px;
+}
