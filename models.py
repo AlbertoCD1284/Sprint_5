@@ -23,7 +23,7 @@ class Datos_Usuario(db.Model):
     clave=TextField()
 
     
-
+  
 # INGRESANDO DATOS A LA TABLA DE DATOS: Datos_Usuario, CON LA FUNCION: ingresar_datos_usuario, DESDE: APP /crearAdmin
 
 def ingresar_datos_usuario(nom, ape, gene, doc, direc, email, tel, cel, cargo, clave):

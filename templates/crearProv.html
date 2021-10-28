@@ -6,7 +6,11 @@ filename="css/buscarAdmin.css")}}">
 {% extends './layout.html' %} {% block section_2 %}
 
 <h1>Crear proveedores</h1>
-
+{% if error==True %}
+<script>
+  alert('Este usuario ya existe')
+</script>
+{% endif %}
 <form method="POST">
   <div class="section_2_div">
     <input

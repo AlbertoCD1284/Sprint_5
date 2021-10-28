@@ -1,3 +1,4 @@
+from logging import error
 from flask import Flask,redirect,url_for,render_template,request
 from flask.helpers import flash
 from flask_login import LoginManager,login_user,logout_user,login_required, current_user,UserMixin
@@ -132,6 +133,7 @@ def buscarAdmin():
 
 @app.route("/crearProv",methods=["GET", "POST"])
 def crearProv():
+    error=False
     if 'ingresar' in request.values:
         nombre=request.form.get('nombre')
         nit=request.form.get('nit')
@@ -140,8 +142,11 @@ def crearProv():
         telefono=request.form.get('telefono')
         celular=request.form.get('celular')
 
-        ingresar_datos_proveedor(nombre, nit, direccion, email, telefono, celular)
-
+        try:
+            ingresar_datos_proveedor(nombre, nit, direccion, email, telefono, celular)
+        except peewee.IntegrityError:
+            error=True
+            return render_template('crearProv.html', rango=rango, error=error)
     return render_template('crearProv.html', rango=rango)
 
 # BUSCARA PROVEEDOR
@@ -181,16 +186,18 @@ def buscarProv():
 
 @app.route("/crearProduc",methods=["GET", "POST"])
 def crearProduc():
-
+    error=False
     if 'ingresar' in request.values:
         marca=request.form.get('marca')
         nombre=request.form.get('nombre')
         codigo=request.form.get('codigo')
         color=request.form.get('color')
         procesador=request.form.get('procesador')
-
-        ingresar_datos_producto(marca,nombre,codigo,color,procesador)
-
+        try:
+            ingresar_datos_producto(marca,nombre,codigo,color,procesador)
+        except peewee.IntegrityError:
+            error=False
+            return render_template('crearProduc.html', rango=rango, error=error)
     return render_template('crearProduc.html', rango=rango)
 
 # BUSCARA PRODUCTO

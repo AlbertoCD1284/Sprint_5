@@ -6,7 +6,11 @@ filename="css/crearAdmin.css")}}">
 {% block section_2 %}
 
 <h1>Crear Producto</h1>
-
+{% if error==True %}
+<script>
+  alert('Este usuario ya existe')
+</script>
+{% endif %}
 <!--  INPUT MARCA -->
 <form method="POST">
     <div class="section_2_div">
