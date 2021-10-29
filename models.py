@@ -3,6 +3,7 @@
 
 from peewee import *
 from playhouse.flask_utils import FlaskDB
+from werkzeug.security import generate_password_hash
 
 
 db = FlaskDB()
@@ -25,7 +26,7 @@ class Datos_Usuario(db.Model):
     
 def Dato_inicial():
     entrada = Datos_Usuario.get_or_create(nombre="Grupo7", apellido="uninorte", genero="masculino",
-                                                documento="1220", direccion="Uninorte", email="grupo7@uninorte.edu.co", telefono="123", cel="321", cargo="Superadministrador",clave="123")
+                                                documento="1220", direccion="Uninorte", email="grupo7@uninorte.edu.co", telefono="123", cel="321", cargo="Superadministrador",clave=generate_password_hash("123",method="sha256"))
 # INGRESANDO DATOS A LA TABLA DE DATOS: Datos_Usuario, CON LA FUNCION: ingresar_datos_usuario, DESDE: APP /crearAdmin
 
 def ingresar_datos_usuario(nom, ape, gene, doc, direc, email, tel, cel, cargo, clave):

@@ -45,25 +45,29 @@ def logout():
 
 @app.route('/')
 def index():   
+    
     return render_template("home.html")
 
 
 @app.route("/login", methods=["GET","POST"])
 
 def login():
-    Dato_inicial()
+    
     if request.method=='POST':
-        userid= request.values['username']
-        password=check_password_hash(request.values['password'])
+        userid= Datos_Usuario.select().where(Datos_Usuario.email==request.form["username"]).first()
+        if userid and check_password_hash(userid.clave, request.form["password"]):
+            userL=request.values["username"]
+            return user_loader(userL)
+        #password=check_password_hash(request.values['password'])
         # password=request.values['password']
-        bd = Datos_Usuario.select().tuples()
-        user=[filas[5] for filas in bd]
-        contraseñas=[filas[9] for filas in bd]
+        #bd = Datos_Usuario.select().tuples()
+        #user=[filas[5] for filas in bd]
+        #contraseñas=[filas[9] for filas in bd]
         
 
-        if  userid in user and password in contraseñas:
+        #if  userid in user and password in contraseñas:
             
-            return user_loader(userid)
+            
         else:
             return   render_template('home.html') #usuario=userid, clave=password) 
     else :
@@ -86,7 +90,7 @@ def crearAdmin():
         telefono=request.form.get('telefono')
         cel=request.form.get('cel')
         cargo=request.form.get('cargo')
-        clave=generate_password_hash(request.form.get('clave'))
+        clave=generate_password_hash(request.form.get('clave'),method="sha256")
         try:   
             ingresar_datos_usuario(nombre,apellido,genero,documento,direccion,email,telefono,cel,cargo,clave)
         except peewee.IntegrityError:
