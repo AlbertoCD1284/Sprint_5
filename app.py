@@ -23,6 +23,7 @@ login_manager.login_view = '/login'
 @login_manager.user_loader 
 def user_loader(user):
     global rango
+    global Datos_U
     User= Datos_Usuario.select().where(Datos_Usuario.email ==user).tuples()
     Datos_U=Datos_Usuario.select().tuples()
     cargo=[filas[8] for filas in User]
@@ -31,10 +32,10 @@ def user_loader(user):
         return render_template("layout.html", rango=rango, Datos_U=Datos_U)
     elif "Administrador" in cargo:
         rango="Administrador"
-        return render_template("layout.html", rango = rango)
+        return render_template("layout.html", rango = rango,Datos_U=Datos_U)
     elif "Usuario" in cargo:
         rango="Usuario"
-        return render_template("layout.html", rango = rango)
+        return render_template("layout.html", rango = rango,Datos_U=Datos_U)
     else:
         return render_template("home.html")
         
