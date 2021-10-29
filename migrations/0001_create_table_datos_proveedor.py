@@ -1,6 +1,6 @@
 """
 create table datos_proveedor
-date created: 2021-10-29 14:38:32.864425
+date created: 2021-10-29 20:41:56.934382
 """
 
 

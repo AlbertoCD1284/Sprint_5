@@ -6,6 +6,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <!-- Bootstrap y Chart.js -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Layaut</title>
 
     <!-- LAYOUT CSS LOCAL -->
@@ -128,9 +132,65 @@
         </div>
       </section>
 
-      <!--##### SECCION 1, ES EL ESAPCIO IZQUIERDO DONDE ESTAN LOS BOTONES DESPLEGADOS -->
+      <!--##### DASHBOARD -->
       <section class="section_2">
-        {% block section_2 %}{% endblock section_2 %}
+        {% block section_2 %}
+        
+        <section>
+          <div class="container">
+              <div class="row">
+                  <div class="resumen-forma">
+                      <h2 class="titulo-forma">Productos</h2>
+                      <h3 class="titulo-resultado">No. {{contagio}}</h3>
+                  </div>
+                  <div class="resumen-forma">
+                      <h2 class="titulo-forma">Servicios</h2>
+                      <h3 class="titulo-resultado">No. {{fallecido}}</h3>
+                  </div>
+                  <div class="resumen-forma">
+                      <h2 class="titulo-forma">IUsiarios</h2>
+                      <h3 class="titulo-resultado">No. {{vacunado}}</h3>
+                  </div>
+                  <div class="resumen-forma">
+                      <h2 class="titulo-forma">Fecha de reporte</h2>
+                      <h3 class="titulo-resultado">{{fecha}} </h3>
+                  </div>
+
+              </div>
+          </div>
+        
+        </section>
+        <section class="section_t">
+           <!--##### TABLA-->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+            {% for datos in Datos_U %}
+              <tr>
+                <th scope="row">{% print(datos[0]) %}</th>
+                <td>{% print(datos[2]) %}</td>
+                <td><button class="btn btn-primary">{% print(datos[3]) %}</button></td>
+              </tr>
+              {% endfor %}
+      
+            </tbody>
+
+            <tfoot>
+            </tfoot>
+
+          </table>
+          
+        </section>
+        <section class="section_g"> 
+        <canvas id="MyChart" width="10" height="10"></canvas>
+        {% endblock section_2 %}
       </section>
     </article>
 
@@ -182,4 +242,33 @@
     <!-- PARTE INFERIOR O PIE DE PAGINA -->
     <footer class="footer"></footer>
   </body>
+  <!-- Dashboard -->
+  <script>
+    var ctx = document.getElementById("MyChart").getContext("2d");
+    var myChart = new Chart(ctx,{
+        type:"doughnut",
+        data:{
+          labels:['col1','col2','col3'],
+          datasets:[{
+            label:'Aurelio',
+            data:[10,10,15],
+            backgroundColor:[
+            'rgb(66, 134, 244,0.5)',
+            'rgb(74, 135, 72,0.5)',
+             'rgb(229, 89, 50,0.5)'
+            ]
+          }]
+        },
+        options:{
+          scale:{
+            YAxes:[{
+              tcks:{
+                beginAtZero:true,
+              }
+            }]
+          }
+        }
+        }
+        )
+  </script>
 </html>

@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/login.css")}}">
     
 </head>
+    {% if errorL==True %}
+    <script>
+       alert('Usuario o Contraseña incorrecto')
+    </script>
+    {% endif %}
 <body>
     <div class="login-box">
         <!-- Imagenes aqui -->

@@ -106,3 +106,46 @@ body{
 }
 
 
+.section_t {
+  float: right;
+  display: inline-block;
+  /* background-color: #7481f1; */
+  width: 70%;
+  height: 100%;
+  text-align: center;
+}
+
+.section_g {
+  float: right;
+  display: inline-block;
+  /* background-color: #7481f1; */
+  width: 30%;
+  height: 100%;
+  text-align: center;
+}
+/* Dash board  */
+.resumen-forma{
+
+  margin: 50px auto;
+  padding: 10px .3em;
+  height: 50px;
+  width: 100px;
+
+  border-radius: 10px;
+  text-align: center;
+  justify-content:center;
+  background-color: #68c2e6;
+
+}
+
+.titulo-forma{
+  font-size: 70%;
+  padding: 0px .1em;
+  color: #373b44;
+}
+
+.titulo-resultado{
+  font-size: 70%;
+  color: #373b44
+}
+

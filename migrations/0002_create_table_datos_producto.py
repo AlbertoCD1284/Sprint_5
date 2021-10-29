@@ -1,6 +1,6 @@
 """
 create table datos_producto
-date created: 2021-10-29 14:38:32.861457
+date created: 2021-10-29 20:41:56.935380
 """
 
 
@@ -11,6 +11,9 @@ def upgrade(migrator):
         table.text('nombre')
         table.text('color')
         table.text('procesador')
+        table.text('stock_Requerido')
+        table.text('stock_Actual')
+        table.foreign_key('TEXT', 'nit_proveedor_id', on_delete=None, on_update=None, references='datos_proveedor.nit')
 
 
 def downgrade(migrator):

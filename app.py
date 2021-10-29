@@ -24,10 +24,11 @@ login_manager.login_view = '/login'
 def user_loader(user):
     global rango
     User= Datos_Usuario.select().where(Datos_Usuario.email ==user).tuples()
+    Datos_U=Datos_Usuario.select().tuples()
     cargo=[filas[8] for filas in User]
     if "Superadministrador" in cargo:
         rango="Superadministrador" 
-        return render_template("layout.html", rango=rango)
+        return render_template("layout.html", rango=rango, Datos_U=Datos_U)
     elif "Administrador" in cargo:
         rango="Administrador"
         return render_template("layout.html", rango = rango)
@@ -35,7 +36,7 @@ def user_loader(user):
         rango="Usuario"
         return render_template("layout.html", rango = rango)
     else:
-        return render_template(".html")
+        return render_template("home.html")
         
 
 @app.route("/logout",methods=['GET','POST'])
@@ -45,14 +46,14 @@ def logout():
 
 @app.route('/')
 def index():   
-    
+    Dato_inicial()
     return render_template("home.html")
 
 
 @app.route("/login", methods=["GET","POST"])
 
 def login():
-    
+    errorL=False
     if request.method=='POST':
         userid= Datos_Usuario.select().where(Datos_Usuario.email==request.form["username"]).first()
         if userid and check_password_hash(userid.clave, request.form["password"]):
@@ -69,7 +70,8 @@ def login():
             
             
         else:
-            return   render_template('home.html') #usuario=userid, clave=password) 
+            errorL=True
+            return   render_template('login.html',errorL=errorL) #usuario=userid, clave=password) 
     else :
         return render_template('login.html')
 
@@ -200,8 +202,11 @@ def crearProduc():
         codigo=request.form.get('codigo')
         color=request.form.get('color')
         procesador=request.form.get('procesador')
+        stock_Requerido=request.form.get('stock_requerido')
+        stock_Actual=request.form.get('stock_actual')
+        nit_proveedor=request.form.get('nit_prov')
         try:
-            ingresar_datos_producto(marca,nombre,codigo,color,procesador)
+            ingresar_datos_producto(marca,nombre,codigo,color,procesador,stock_Requerido, stock_Actual,nit_proveedor)
         except peewee.IntegrityError:
             error=False
             return render_template('crearProduc.html', rango=rango, error=error)
@@ -223,8 +228,10 @@ def buscarProduc():
         codigo=request.form.get('codigo')
         color=request.form.get('color')
         procesador=request.form.get('procesador')
-
-        edit_P(marca,nombre,codigo,color,procesador)
+        stock_Requerido=request.form.get('stock_requerido')
+        stock_Actual=request.form.get('stock_actual')
+        nit_proveedor=request.form.get('nit_prov')
+        edit_P(marca,nombre,codigo,color,procesador,stock_Requerido, stock_Actual,nit_proveedor)
         datos=select_P(codigo)
         return render_template("buscarProduc.html", datos=datos, rango=rango)
     

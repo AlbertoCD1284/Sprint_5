@@ -98,21 +98,61 @@ section_2 %}
     />
     {% endif %}
 
-    <!-- INPUT proveedor -->
+    <!-- INPUT STOCK REQUERIDO -->
     {% if datos %}
     <input
       type="text"
       class="form-control"
-      placeholder="Proveedor"
-      name="proveedor"
-      value="{{datos[0].proveedor}}"
+      placeholder="Stock_requerido"
+      name="stock_requerido"
+      value="{{datos[0].stock_Requerido}}"
     />
     {% else %}
     <input
       type="text"
       class="form-control"
-      placeholder="Proveedor"
-      name="proveedor"
+      placeholder="Stock_requerido"
+      name="stock_requerido"
+    />
+    {% endif %}
+
+    <!-- INPUT STOCK ACTUAL -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Stock_actual"
+      name="stock_actual"
+      value="{{datos[0].stock_Actual}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      placeholder="Stock_actual"
+      name="stock_actual"
+      name="stock_requerido"
+    />
+    {% endif %}
+
+
+
+
+
+    <!-- INPUT NIT_PROOV -->
+    {% if datos %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nit_prov"
+      name="nit_prov"
+      value="{{datos[0].nit_proveedor}}"
+    />
+    {% else %}
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nit_prov"
+      name="nit_prov"
     />
     {% endif %}
   </div>

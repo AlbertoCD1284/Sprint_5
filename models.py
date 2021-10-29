@@ -24,8 +24,13 @@ class Datos_Usuario(db.Model):
     clave=TextField()
 
     
+
+    
 def Dato_inicial():
-    entrada = Datos_Usuario.get_or_create(nombre="Grupo7", apellido="uninorte", genero="masculino",
+    User_1= Datos_Usuario.select().tuples()
+    cargo=[filas[5]  for filas in User_1]
+    if "grupo7@uninorte.edu.co" not in cargo:
+       entrada = Datos_Usuario.get_or_create(nombre="Grupo7", apellido="uninorte", genero="masculino",
                                                 documento="1220", direccion="Uninorte", email="grupo7@uninorte.edu.co", telefono="123", cel="321", cargo="Superadministrador",clave=generate_password_hash("123",method="sha256"))
 # INGRESANDO DATOS A LA TABLA DE DATOS: Datos_Usuario, CON LA FUNCION: ingresar_datos_usuario, DESDE: APP /crearAdmin
 
@@ -58,6 +63,8 @@ class Datos_Proveedor(db.Model):
     email=TextField(unique=True)
     telefono=TextField()
     celular=TextField(unique=True)
+    
+    
 
 # INGRESANDO DATOS A LA TABLA DE DATOS: Datos_Proveedor, CON LA FUNCION: ingresar_datos_proveedor, DESDE: APP /crearProv
 def ingresar_datos_proveedor(nombre, nit, direccion, email, telefono, celular):
@@ -87,14 +94,18 @@ class Datos_Producto(db.Model):
     codigo=TextField(primary_key=True, unique=True)
     color=TextField()
     procesador=TextField()
+    stock_Requerido=TextField()
+    stock_Actual=TextField()
+    nit_proveedor= ForeignKeyField(Datos_Proveedor)
+
     
     
 
 
 # INGRESANDO DATOS A LA TABLA DE DATOS: Datos_Producto, CON LA FUNCION: ingresar_datos_producto, DESDE: APP /crearProducto
-def ingresar_datos_producto(nombre, marca, codigo, color, procesador):
+def ingresar_datos_producto(nombre, marca, codigo, color, procesador,stock_Requerido, stock_Actual,nit_proveedor):
     entrada, creado = Datos_Producto.get_or_create(nombre=nombre, marca=marca, codigo=codigo,
-                                color=color, procesador=procesador)
+                                color=color, procesador=procesador,stock_Requerido=stock_Requerido,stock_Actual=stock_Actual,nit_proveedor=nit_proveedor)
 
 
 # TOMAR UNA LINEA DE LA TABLA DE DATOS: Datos_Producto, CON LA FUNCION: select_U, RETORNAR LISTA: list(query)
@@ -103,9 +114,9 @@ def select_P(doc):
     return list(query)
 
 # EDITAR UN DATO DE LA TABLA DE DATOS: Datos_Producto, CON LA FUNCION: edit_P, DESDE: APP /crearProducto
-def edit_P(nombre, marca, codigo, color, procesador):
+def edit_P(nombre, marca, codigo, color, procesador,stock_Requerido,stock_Actual,nit_proveedor):
     update = Datos_Producto.update(nombre=nombre, marca=marca, codigo=codigo,
-                            color=color, procesador=procesador).where(Datos_Producto.codigo == codigo).execute()
+                            color=color, procesador=procesador,stock_Requerido=stock_Requerido,stock_Actual=stock_Actual,nit_proveedor=nit_proveedor).where(Datos_Producto.codigo == codigo).execute()
 
 # ELIMINAR UNA LINEA DE LA TABLA DE DATOS: Datos_Producto, CON LA FUNCION: delete_P, DESDE: APP /buscarUsuario
 def delete_P(doc_elim):
