@@ -47,6 +47,7 @@ def logout():
 @app.route('/')
 def index():   
     Dato_inicial()
+    Dato_pinicial()
     return render_template("home.html")
 
 @app.route("/layout", methods=["GET","POST"])

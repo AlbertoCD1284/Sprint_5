@@ -28,8 +28,8 @@ class Datos_Usuario(db.Model):
 #Datos proveedor inicial
 def Dato_pinicial():
     User_1= Datos_Proveedor.select().tuples()
-    correo=[filas[3]  for filas in User_1]
-    if "foxxcon@gmail.com" not in correo:
+    correo=[filas[1]  for filas in User_1]
+    if "123" not in correo:
        entrada = Datos_Proveedor.get_or_create(nombre="Foxconn Technology Group", nit="123", direccion="Distrito de Tucheng, Nuevo Taipéi", email="foxxcon@gmail.com", telefono='6568694', celular='314565897')
 #Dato usuario inicial    
 def Dato_inicial():

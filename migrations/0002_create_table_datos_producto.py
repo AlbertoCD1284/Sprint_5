@@ -1,6 +1,6 @@
 """
 create table datos_producto
-date created: 2021-10-29 20:41:56.935380
+date created: 2021-10-30 03:45:02.730493
 """
 
 
