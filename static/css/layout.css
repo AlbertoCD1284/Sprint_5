@@ -1,8 +1,8 @@
 /* COLOR FONDO DE PAGINA */
 body{
   background: #373b44;
-  background: -webkit-linear-gradient(to right, #4286f4, #373b44);
-  background: linear-gradient(to right, #4286f4, #4f5d7c);
+  background: -webkit-linear-gradient(to right, #b7cfe7, #b7cfe7);
+  background: linear-gradient(to right, #b7cfe7, #b7cfe7);
 }
  asdf
 .apuntes{
@@ -46,7 +46,7 @@ body{
 }
 
 .links {
-  background-color: #3e4b8d;
+  background-color: rgba(6, 43, 73, 0.993);
   width: 60%;
   display: none;
 }
@@ -90,7 +90,7 @@ body{
 }
 
 .blockquote{
-  color: aqua;
+  color: gray;
 }
 
 /* PARTE INFERIOR O PIE DE PAGINA  */

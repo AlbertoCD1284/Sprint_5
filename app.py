@@ -6,8 +6,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import *
 from config import dev
 import peewee
-import numpy as np
-
 
 app=Flask(__name__)
 app.config.from_object(dev)
@@ -49,8 +47,11 @@ def logout():
 @app.route('/')
 def index():   
     Dato_inicial()
-    Dato_pinicial()
     return render_template("home.html")
+
+@app.route("/layout", methods=["GET","POST"])
+def layout():
+    return render_template('layout.html', rango=rango, Datos_U=Datos_U)
 
 
 @app.route("/login", methods=["GET","POST"])
@@ -100,9 +101,9 @@ def crearAdmin():
             ingresar_datos_usuario(nombre,apellido,genero,documento,direccion,email,telefono,cel,cargo,clave)
         except peewee.IntegrityError:
             error=True
-            return render_template("crearAdmin.html", rango=rango, error=error)
+            return render_template("crearAdmin.html", rango=rango, error=error, Datos_U=Datos_U)
             
-    return render_template("crearAdmin.html", rango=rango)
+    return render_template("crearAdmin.html", rango=rango, Datos_U=Datos_U)
 
 
 # ***************BUSCAR USUARIO GENERAL***************
@@ -115,7 +116,7 @@ def buscarAdmin():
         doc_bus=request.form.get('doc_buscar')        
         print(doc_bus)
         datos=select_U(doc_bus)
-        return render_template("buscarUsuario.html", datos=datos, rango=rango)
+        return render_template("buscarUsuario.html", datos=datos, rango=rango, Datos_U=Datos_U)
             
     
     if 'editar' in request.values:
@@ -132,14 +133,14 @@ def buscarAdmin():
 
         edit_U(nombre,apellido,genero,documento,direccion,email,telefono,cel,cargo,clave)
         datos=select_U(documento)
-        return render_template("buscarUsuario.html", datos=datos, rango=rango)
+        return render_template("buscarUsuario.html", datos=datos, rango=rango, Datos_U=Datos_U)
     
     if 'eliminar' in request.values:
         doc_elim=request.form.get('documento')
         delete_U(doc_elim)
-        return render_template("buscarUsuario.html", rango=rango)
+        return render_template("buscarUsuario.html", rango=rango, Datos_U=Datos_U)
     else:
-        return render_template("buscarUsuario.html", rango=rango)
+        return render_template("buscarUsuario.html", rango=rango, Datos_U=Datos_U)
 
 # **************CREEAR PROVEEDOR*****************
 
@@ -158,8 +159,8 @@ def crearProv():
             ingresar_datos_proveedor(nombre, nit, direccion, email, telefono, celular)
         except peewee.IntegrityError:
             error=True
-            return render_template('crearProv.html', rango=rango, error=error)
-    return render_template('crearProv.html', rango=rango)
+            return render_template('crearProv.html', rango=rango, error=error, Datos_U=Datos_U)
+    return render_template('crearProv.html', rango=rango, Datos_U=Datos_U)
 
 # BUSCARA PROVEEDOR
 @app.route("/buscarProv", methods=["GET", "POST"])
@@ -168,7 +169,7 @@ def buscarProv():
     if 'buscar' in request.values:
         nit_bus=request.form.get('nit_bus')
         datos=select_Prov(nit_bus)
-        return render_template("buscarProv.html", datos=datos, rango=rango)
+        return render_template("buscarProv.html", datos=datos, rango=rango, Datos_U=Datos_U)
             
     
     if 'editar' in request.values:
@@ -182,14 +183,14 @@ def buscarProv():
         edit_Prov(nombre, nit, direccion, email, telefono, celular)
         datos=select_Prov(nit)
 
-        return render_template("buscarProv.html", datos=datos, rango=rango)
+        return render_template("buscarProv.html", datos=datos, rango=rango, Datos_U=Datos_U)
     
     if 'eliminar' in request.values:
         doc_elim=request.form.get('nit')
         delete_Prov(doc_elim)
-        return render_template("buscarProv.html", rango=rango)
+        return render_template("buscarProv.html", rango=rango, Datos_U=Datos_U)
     else:
-        return render_template("buscarProv.html", rango=rango)
+        return render_template("buscarProv.html", rango=rango, Datos_U=Datos_U)
 
 
 
@@ -212,8 +213,8 @@ def crearProduc():
             ingresar_datos_producto(marca,nombre,codigo,color,procesador,stock_Requerido, stock_Actual,nit_proveedor)
         except peewee.IntegrityError:
             error=False
-            return render_template('crearProduc.html', rango=rango, error=error)
-    return render_template('crearProduc.html', rango=rango)
+            return render_template('crearProduc.html', rango=rango, error=error, Datos_U=Datos_U)
+    return render_template('crearProduc.html', rango=rango, Datos_U=Datos_U)
 
 # BUSCARA PRODUCTO
 @app.route("/buscarProduc", methods=["GET", "POST"])
@@ -222,7 +223,7 @@ def buscarProduc():
     if 'buscar' in request.values:
         cod_bus=request.form.get('cod_bus')
         datos=select_P(cod_bus)
-        return render_template("buscarProduc.html", datos=datos, rango=rango)
+        return render_template("buscarProduc.html", datos=datos, rango=rango, Datos_U=Datos_U)
             
     
     if 'editar' in request.values:
@@ -236,14 +237,14 @@ def buscarProduc():
         nit_proveedor=request.form.get('nit_prov')
         edit_P(marca,nombre,codigo,color,procesador,stock_Requerido, stock_Actual,nit_proveedor)
         datos=select_P(codigo)
-        return render_template("buscarProduc.html", datos=datos, rango=rango)
+        return render_template("buscarProduc.html", datos=datos, rango=rango, Datos_U=Datos_U)
     
     if 'eliminar' in request.values:
         doc_elim=request.form.get('codigo')
         delete_P(doc_elim)
-        return render_template("buscarProduc.html", rango=rango)
+        return render_template("buscarProduc.html", rango=rango, Datos_U=Datos_U)
     else:
-        return render_template("buscarProduc.html", rango=rango)
+        return render_template("buscarProduc.html", rango=rango, Datos_U=Datos_U)
 
     
 
