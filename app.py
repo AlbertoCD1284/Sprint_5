@@ -52,6 +52,7 @@ def index():
 
 @app.route("/layout", methods=["GET","POST"])
 def layout():
+    Datos_U=Datos_Producto.select().tuples()
     return render_template('layout.html', rango=rango, Datos_U=Datos_U)
 
 
@@ -155,7 +156,6 @@ def crearProv():
         email=request.form.get('email')
         telefono=request.form.get('telefono')
         celular=request.form.get('celular')
-
         try:
             ingresar_datos_proveedor(nombre, nit, direccion, email, telefono, celular)
         except peewee.IntegrityError:
@@ -215,6 +215,7 @@ def crearProduc():
         except peewee.IntegrityError:
             error=False
             return render_template('crearProduc.html', rango=rango, error=error, Datos_U=Datos_U)
+    Datos_U=Datos_Producto.select().tuples()
     return render_template('crearProduc.html', rango=rango, Datos_U=Datos_U)
 
 # BUSCARA PRODUCTO
