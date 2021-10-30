@@ -2,7 +2,7 @@
 filename="css/buscarAdmin.css")}}"> {% extends './layout.html' %} {% block
 section_2 %}
 
-<h1>Buscar Usuario</h1>
+<h1>Buscar </h1>
 
 <!-- PARA BUSQUEDA -->
 <form class="buscar" action="" method="POST">
@@ -19,6 +19,7 @@ section_2 %}
 
 <form action="/buscarUsuario" , method="POST">
   <div class="section_2_div">
+    <label for= "nombre">Nombre</label>
     <!-- INPUT NOMBRE -->
     {% if datos %}
     <input
@@ -38,6 +39,7 @@ section_2 %}
     {% endif %}
 
     <!-- INPUT APELLIDO -->
+    <label for= "apellido">Apellido</label>
     {% if datos %}
     <input
       type="text"
@@ -54,7 +56,7 @@ section_2 %}
       name="apellido"
     />
     {% endif %}
-
+    <label for= "genero">Genero</label>
     <!-- INPUT GENERO -->
     {% if datos %}
     <input
@@ -72,7 +74,7 @@ section_2 %}
       name="genero"
     />
     {% endif %}
-
+    <label for= "documento">Documento</label>
     <!-- INPUT DOCUMENTO -->
     {% if datos %}
     <input
@@ -90,7 +92,7 @@ section_2 %}
       name="documento"
     />
     {% endif %}
-
+    <label for= "direccion">Direccion</label>
     <!-- INPUT DIERECCION -->
     {% if datos %}
     <input
@@ -108,7 +110,7 @@ section_2 %}
       name="direccion"
     />
     {% endif %}
-
+    <label for= "email">Email</label>
     <!-- INPUT EMAIL -->
     {% if datos %}
     <input
@@ -130,7 +132,7 @@ section_2 %}
       name="email"
     />
     {% endif %}
-
+    <label for= "telefono">Telefono</label>
     <!-- INPUT TELEFONO -->
     {% if datos %}
     <input
@@ -148,7 +150,7 @@ section_2 %}
       name="telefono"
     />
     {% endif %}
-
+    <label for= "cel">Celular</label>
     <!-- INPUT CEL -->
     {% if datos %}
     <input
@@ -166,7 +168,7 @@ section_2 %}
       name="cel"
     />
     {% endif %}
-
+    <label for= "cargo">Cargo</label>
     <!-- INPUT CARGO -->
     {% if datos %}
     <input
@@ -184,7 +186,7 @@ section_2 %}
       name="cargo"
     />
     {% endif %}
-
+    <label for= "clave">Contraseña</label>
     <!-- INPUT CLAVE -->
     {% if datos %}
     <input

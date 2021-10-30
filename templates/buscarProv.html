@@ -7,6 +7,7 @@ section_2 %}
 <!-- PARA BUSQUEDA -->
 <form class="buscar" action="" method="POST">
   <!-- INPUT id -->
+  <label for= "nit">NIT</label>
   <input
     type="text"
     class="form-control"
@@ -19,6 +20,7 @@ section_2 %}
 <form action="/buscarProv" , method="POST">
   <div class="section_2_div">
     <!-- INPUT NOMBRE -->
+    <label for= "nombre">Nombre</label>
     {% if datos %}
     <input
       type="text"
@@ -35,7 +37,7 @@ section_2 %}
       name="nombre"
     />
     {% endif %}
-
+    <label for= "nit">NIT</label>
     <!-- INPUT NIT -->
     {% if datos %}
     <input
@@ -48,7 +50,7 @@ section_2 %}
     {% else %}
     <input type="text" class="form-control" placeholder="NIT" name="nit" />
     {% endif %}
-
+    <label for= "direccion">Dirección</label>
     <!-- INPUT DIERECCION -->
     {% if datos %}
     <input
@@ -65,8 +67,10 @@ section_2 %}
       placeholder="Direccion"
       name="direccion"
     />
-    {% endif %}
 
+    {% endif %}
+    <br>
+    <label for= "email">Email</label>
     <!-- INPUT EMAIL -->
     {% if datos %}
     <input
@@ -88,7 +92,7 @@ section_2 %}
       name="email"
     />
     {% endif %}
-
+    <label for= "telefono">Telefono</label>
     <!-- INPUT TELEFONO -->
     {% if datos %}
     <input
@@ -106,7 +110,7 @@ section_2 %}
       name="telefono"
     />
     {% endif %}
-
+    <label for= "celular">Celular</label>
     <!-- INPUT CEL -->
     {% if datos %}
     <input

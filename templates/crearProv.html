@@ -5,7 +5,7 @@ filename="css/buscarAdmin.css")}}">
 
 {% extends './layout.html' %} {% block section_2 %}
 
-<h1>Crear proveedores</h1>
+<h1>Crear Proveedores</h1>
 {% if error==True %}
 <script>
   alert('Este usuario ya existe')
@@ -13,21 +13,25 @@ filename="css/buscarAdmin.css")}}">
 {% endif %}
 <form method="POST">
   <div class="section_2_div">
+    <label for= "nombre">Nombre</label>
     <input
       type="text"
       class="form-control"
       placeholder="Nombre"
       name="nombre"
     />
-    <!-- DOCUMENTO -->
+    <!-- NIT -->
+    <label for= "nit">NIT</label>
     <input type="text" class="form-control" placeholder="NIT" name="nit" />
-
+    <label for= "direccion">Dirección</label>
     <input
       type="text"
       class="form-control"
       placeholder="Direccion"
       name="direccion"
     />
+    <br>
+    <label for= "email">Email</label>
     <input
       type="email"
       class="form-control"
@@ -36,12 +40,14 @@ filename="css/buscarAdmin.css")}}">
       placeholder="Enter email"
       name="email"
     />
+    <label for= "telefono">Telefono</label>
     <input
       type="text"
       class="form-control"
       placeholder="Numero telefonico"
       name="telefono"
     />
+    <label for= "celular">Celular</label>
     <input
       type="text"
       class="form-control"
@@ -49,6 +55,7 @@ filename="css/buscarAdmin.css")}}">
       name="celular"
     />
   </div>
+
   <input
     type="submit"
     class="btn btn-primary"

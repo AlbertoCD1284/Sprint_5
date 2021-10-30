@@ -2,7 +2,7 @@
 filename="css/buscarAdmin.css")}}"> {% extends './layout.html' %} {% block
 section_2 %}
 
-<h1>Crear Administrador</h1>
+<h1>Crear </h1>
 
 {% if error==True %}
 <script>
@@ -14,13 +14,14 @@ section_2 %}
 <!-- INPUT NOMBRE -->
 <form method="POST">
   <div class="section_2_div">
+    <label for= "nombre">Nombre</label>
     <input
       type="text"
       class="form-control"
       placeholder="Nombre"
       name="nombre"
     />
-
+    <label for= "apellido">Apellido</label>
     <!-- INPUT APELLIDO -->
     <input
       type="text"
@@ -28,7 +29,7 @@ section_2 %}
       placeholder="Apellido"
       name="apellido"
     />
-
+    <label for= "genero">Genero</label>
     <!-- INPUT GENERO -->
     <input
       type="text"
@@ -36,7 +37,7 @@ section_2 %}
       placeholder="Genero"
       name="genero"
     />
-
+    <label for= "documento">Documento</label>
     <!-- INPUT DOCUMENTO -->
     <input
       type="text"
@@ -44,7 +45,7 @@ section_2 %}
       placeholder="Numero documento"
       name="documento"
     />
-
+    <label for= "direccion">Direccion</label>
     <!-- INPUT DIERECCION -->
     <input
       type="text"
@@ -52,7 +53,7 @@ section_2 %}
       placeholder="Direccion"
       name="direccion"
     />
-
+    <label for= "email">Email</label>
     <!-- INPUT EMAIL -->
     <input
       type="email"
@@ -62,7 +63,7 @@ section_2 %}
       placeholder="Enter email"
       name="email"
     />
-
+    <label for= "telefono">Telefono</label>
     <!-- INPUT TELEFONO -->
     <input
       type="text"
@@ -70,7 +71,7 @@ section_2 %}
       placeholder="Numero telefonico"
       name="telefono"
     />
-
+    <label for= "cel">Celular</label>
     <!-- INPUT CEL -->
     <input
       type="text"
@@ -78,6 +79,7 @@ section_2 %}
       placeholder="Numero celular"
       name="cel"
     />
+    <label for= "cargo">Cargo</label>
     <!-- INPUT CARGO -->
     <input
       type="text"
@@ -85,6 +87,7 @@ section_2 %}
       placeholder="Cargo a ocupar"
       name="cargo"
     />
+    <label for= "clave">Contraseña</label>
     <!-- INPUT CLAVE -->
     <input type="text" class="form-control" placeholder="Clave" name="clave" />
   </div>
