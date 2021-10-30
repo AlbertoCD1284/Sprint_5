@@ -144,11 +144,11 @@
                       <h3 class="titulo-resultado">No. {{contagio}}</h3>
                   </div>
                   <div class="resumen-forma">
-                      <h2 class="titulo-forma">Servicios</h2>
+                      <h2 class="titulo-forma">Proveedores</h2>
                       <h3 class="titulo-resultado">No. {{fallecido}}</h3>
                   </div>
                   <div class="resumen-forma">
-                      <h2 class="titulo-forma">IUsiarios</h2>
+                      <h2 class="titulo-forma">Usuarios</h2>
                       <h3 class="titulo-resultado">No. {{vacunado}}</h3>
                   </div>
                   <div class="resumen-forma">
@@ -167,16 +167,18 @@
               <tr>
                 <th scope="col">Codigo</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Estado</th>
+                <th scope="col">Stock Actual</th>
+                <th scope="col">Stock Requerido</th>
               </tr>
             </thead>
             
             <tbody>
             {% for datos in Datos_U %}
               <tr>
-                <th scope="row">{% print(datos[0]) %}</th>
-                <td>{% print(datos[2]) %}</td>
-                <td><button class="btn btn-primary">{% print(datos[3]) %}</button></td>
+                <th scope="row">{% print(datos[2]) %}</th>
+                <td>{% print(datos[1]) %}</td>
+                <td>{% print(datos[6]) %}</td>
+                <td>{% print(datos[5]) %}</td>
               </tr>
               {% endfor %}
       

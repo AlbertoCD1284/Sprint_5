@@ -25,7 +25,13 @@ class Datos_Usuario(db.Model):
 
     
 
-    
+#Datos proveedor inicial
+def Dato_pinicial():
+    User_1= Datos_Proveedor.select().tuples()
+    correo=[filas[3]  for filas in User_1]
+    if "foxxcon@gmail.com" not in correo:
+       entrada = Datos_Proveedor.get_or_create(nombre="Foxconn Technology Group", nit="123", direccion="Distrito de Tucheng, Nuevo Taipéi", email="foxxcon@gmail.com", telefono='6568694', celular='314565897')
+#Dato usuario inicial    
 def Dato_inicial():
     User_1= Datos_Usuario.select().tuples()
     cargo=[filas[5]  for filas in User_1]
@@ -63,9 +69,10 @@ class Datos_Proveedor(db.Model):
     email=TextField(unique=True)
     telefono=TextField()
     celular=TextField(unique=True)
-    
-    
 
+#db.create_tables([Datos_Proveedor])    
+#entrada=Datos_Proveedor.create(nombre="Foxconn Technology Group", nit="123", direccion="Distrito de Tucheng, Nuevo Taipéi", email="foxxcon@gmail.com", telefono='6568694', celular='314565897')
+#entrada.save()
 # INGRESANDO DATOS A LA TABLA DE DATOS: Datos_Proveedor, CON LA FUNCION: ingresar_datos_proveedor, DESDE: APP /crearProv
 def ingresar_datos_proveedor(nombre, nit, direccion, email, telefono, celular):
         entrada, creado = Datos_Proveedor.get_or_create(nombre=nombre, nit=nit, direccion=direccion,

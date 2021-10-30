@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import *
 from config import dev
 import peewee
+import numpy as np
 
 
 app=Flask(__name__)
@@ -25,7 +26,7 @@ def user_loader(user):
     global rango
     global Datos_U
     User= Datos_Usuario.select().where(Datos_Usuario.email ==user).tuples()
-    Datos_U=Datos_Usuario.select().tuples()
+    Datos_U=Datos_Producto.select().tuples()
     cargo=[filas[8] for filas in User]
     if "Superadministrador" in cargo:
         rango="Superadministrador" 
@@ -48,6 +49,7 @@ def logout():
 @app.route('/')
 def index():   
     Dato_inicial()
+    Dato_pinicial()
     return render_template("home.html")
 
 
